@@ -5,11 +5,14 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
+    "leaflet": "^1.0.0",
     "prop-types": "^15.6.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
-    "react-scripts": "^1.1.4",
-    "react-leaflet-distortable-imageoverlay": "file:.."
+    "react-leaflet": "^2.0.1",
+    "react-leaflet-distortable-imageoverlay": "file:..",
+    "react-rangeslider": "^2.2.0",
+    "react-scripts": "^1.1.4"
   },
   "scripts": {
     "start": "react-scripts start",

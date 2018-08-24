@@ -3,3 +3,23 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.leaflet-container {
+  height: 1000px;
+  width: 100%;
+}
+
+.btn {
+    background-color: #3399cc;
+    background-size: 0% 100%;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    display: inline-block;
+    font-size: 20px;
+    outline: none;
+    padding: 10px 30px;
+    margin: 20px 20px;
+    text-align: center;
+    text-decoration: none;
+}
