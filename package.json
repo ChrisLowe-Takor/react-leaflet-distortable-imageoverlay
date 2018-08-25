@@ -1,9 +1,18 @@
 {
   "name": "react-leaflet-distortable-imageoverlay",
   "version": "1.0.0",
-  "description": "Scale, skew, rotate and traslate image overlays",
-  "author": "ChrisLowe-Takor",
+  "description": "Distortable ImageOverlay",
+  "author": "Chris Lowe",
   "license": "MIT",
+  "keywords": [
+    "react",
+    "leaflet",
+    "imageoverlay",
+    "distort",
+    "stretch",
+    "skew",
+    "rotate"
+  ],
   "repository": "ChrisLowe-Takor/react-leaflet-distortable-imageoverlay",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
