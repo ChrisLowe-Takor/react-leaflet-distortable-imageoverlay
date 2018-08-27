@@ -22,4 +22,25 @@ body {
     margin: 20px 20px;
     text-align: center;
     text-decoration: none;
+    cursor: pointer;
+}
+
+.btn.enabled {
+    background-color: green;
+    cursor: default;
+}
+
+img.logo {
+  max-width: 200px;
+}
+
+div.center {
+  margin: 0 auto;
+  display: block;
+  text-align: center;
+  width: 50%;
+}
+
+div.center h4 {
+  text-align: left;
 }

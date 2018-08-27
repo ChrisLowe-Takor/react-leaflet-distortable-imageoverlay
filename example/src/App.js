@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types';
-import { Map, TileLayer, ImageOverlay, Marker } from 'react-leaflet'
+import { Map, TileLayer } from 'react-leaflet'
 import L from 'leaflet'
 
 import ReactDistortableImageOverlay from 'react-leaflet-distortable-imageoverlay';
@@ -46,7 +46,11 @@ export default class App extends React.Component {
   }
 
   onCornersUpdate(corners) {
-    this.setState({ latLngString: corners.toString()});
+    console.log(corners);
+  }
+
+  onWellKnownTextUpdated(wkt) {
+    console.log(wkt);
   }
 
   handleOpacityChange(value) {
@@ -60,20 +64,24 @@ export default class App extends React.Component {
     return (
       <div className="map">
 
-        <a className="btn" href="#" onClick={this.clickRotate.bind(this)}><i className="fa fa-refresh"></i>&nbsp;&nbsp;Rotate</a>
-        <a className="btn" href="#" onClick={this.clickDistort.bind(this)}>Distort</a>
-        <a className="btn" href="#" onClick={this.clickTranslate.bind(this)}><i className="fa fa-arrows"></i>&nbsp;&nbsp;Translate</a>
-        <a className="btn" href="#" onClick={this.clickScale.bind(this)}><i className="fa fa-expand"></i>&nbsp;&nbsp;Scale</a>
-        <a className="btn" href="#" onClick={this.clickClose.bind(this)}>Lock</a>
-        <p>{this.state.latLngString}</p>
+        <img className="logo" src="/soar_logo.png"></img>
 
-        <div style={{width: '400px'}}>
-        <Slider
-          min={0}
-          max={100}
-          value={this.state.opacity * 100.0}
-          onChange={this.handleOpacityChange.bind(this)}
-        />
+        <div className="center">
+          <button className={this.state.editMode === 'rotate' ? 'btn enabled' : 'btn' } href="#" onClick={this.clickRotate.bind(this)}><i className="fa fa-refresh"></i>&nbsp;&nbsp;Rotate</button>
+          <button className={this.state.editMode === 'distort' ? 'btn enabled' : 'btn' } href="#" onClick={this.clickDistort.bind(this)}><i className="fa fa-object-group"></i>&nbsp;&nbsp;Distort</button>
+          <button className={this.state.editMode === 'translate' ? 'btn enabled' : 'btn' } href="#" onClick={this.clickTranslate.bind(this)}><i className="fa fa-arrows"></i>&nbsp;&nbsp;Translate</button>
+          <button className={this.state.editMode === 'scale' ? 'btn enabled' : 'btn' } href="#" onClick={this.clickScale.bind(this)}><i className="fa fa-expand"></i>&nbsp;&nbsp;Scale</button>
+          <button className="btn" href="#" onClick={this.clickClose.bind(this)}><i className="fa fa-lock"></i>&nbsp;&nbsp;Lock</button>
+
+
+          <h4>Opacity:</h4>
+          <Slider
+            min={0}
+            max={100}
+            value={this.state.opacity * 100.0}
+            onChange={this.handleOpacityChange.bind(this)}
+          />
+
         </div>
 
         <Map
@@ -93,7 +101,8 @@ export default class App extends React.Component {
               new L.latLng(43.78098644922989,15.655914504316957)
             ]}
             
-            onWellKnownTextUpdated={this.onCornersUpdate.bind(this)}
+            onCornersUpdate={this.onCornersUpdate.bind(this)}
+            onWellKnownTextUpdated={this.onWellKnownTextUpdated.bind(this)}
             opacity={this.state.opacity}
             editMode={this.state.editMode}
           />
