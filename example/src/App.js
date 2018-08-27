@@ -82,7 +82,7 @@ export default class App extends React.Component {
           <TileLayer
             noWrap={true}
             attribution=""
-            url="http://mt0.google.com/vt/lyrs=s&x={x}&y={y}&z={z}"/>
+            url="https://mt0.google.com/vt/lyrs=s&x={x}&y={y}&z={z}"/>
 
           <ReactDistortableImageOverlay 
           	url="https://i.imgur.com/jaRqxHa.jpg"
