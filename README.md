@@ -9,6 +9,9 @@ A react-leaflet ImageOverlay that supports stretching, skewing, distorting, rota
 
 It was built for the [Soar platform](https://github.com/SoarEarth) by extending the functionality of [Leaflet.DistortableImage](https://github.com/publiclab/Leaflet.DistortableImage) and [Leaflet.Path.Transform](https://github.com/w8r/Leaflet.Path.Transform)
 
+![Live Demo](https://chrislowe-takor.github.io/react-leaflet-distortable-imageoverlay/)
+
+
 ![Demo](demo/demo.gif?raw=true "Demo")
 
 

@@ -64,7 +64,10 @@ export default class App extends React.Component {
     return (
       <div className="map">
 
-        <img className="logo" src="/soar_logo.png"></img>
+        <div className="center">
+          <img className="logo" src="https://chrislowe-takor.github.io/react-leaflet-distortable-imageoverlay/soar_logo.png"></img>
+          <p>How well can you place this drone image on the Soar supermap?<br></br>  Use the rotate, scale, translate and distort tools to find out.</p>
+        </div>
 
         <div className="center">
           <button className={this.state.editMode === 'rotate' ? 'btn enabled' : 'btn' } href="#" onClick={this.clickRotate.bind(this)}><i className="fa fa-refresh"></i>&nbsp;&nbsp;Rotate</button>
@@ -85,7 +88,7 @@ export default class App extends React.Component {
         </div>
 
         <Map
-          bounds={[[43.786293, 15.647650,0],[43.686293, 15.547650,0]]}
+          bounds={[[43.788434, 15.644610,0],[43.775297, 15.660593,0]]}
         >
           <TileLayer
             noWrap={true}
