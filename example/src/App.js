@@ -64,19 +64,19 @@ export default class App extends React.Component {
     return (
       <div className="map">
 
-        <div className="center">
+        <div className="center logo-container">
           <img className="logo" src="https://chrislowe-takor.github.io/react-leaflet-distortable-imageoverlay/soar_logo.png"></img>
           <p>How well can you place this drone image on the Soar supermap?<br></br>  Use the rotate, scale, translate and distort tools to find out.</p>
         </div>
 
-        <div className="center">
-          <button className={this.state.editMode === 'rotate' ? 'btn enabled' : 'btn' } href="#" onClick={this.clickRotate.bind(this)}><i className="fa fa-refresh"></i>&nbsp;&nbsp;Rotate</button>
-          <button className={this.state.editMode === 'distort' ? 'btn enabled' : 'btn' } href="#" onClick={this.clickDistort.bind(this)}><i className="fa fa-object-group"></i>&nbsp;&nbsp;Distort</button>
-          <button className={this.state.editMode === 'translate' ? 'btn enabled' : 'btn' } href="#" onClick={this.clickTranslate.bind(this)}><i className="fa fa-arrows"></i>&nbsp;&nbsp;Translate</button>
-          <button className={this.state.editMode === 'scale' ? 'btn enabled' : 'btn' } href="#" onClick={this.clickScale.bind(this)}><i className="fa fa-expand"></i>&nbsp;&nbsp;Scale</button>
-          <button className="btn" href="#" onClick={this.clickClose.bind(this)}><i className="fa fa-lock"></i>&nbsp;&nbsp;Lock</button>
+        <div className="center tool-container">
+          <button className={this.state.editMode === 'rotate' ? 'btn enabled' : 'btn' } href="#" onClick={this.clickRotate.bind(this)}><i className="fa fa-refresh"></i><span class="tool-text">Rotate</span></button>
+          <button className={this.state.editMode === 'distort' ? 'btn enabled' : 'btn' } href="#" onClick={this.clickDistort.bind(this)}><i className="fa fa-object-group"></i><span class="tool-text">Distort</span></button>
+          <button className={this.state.editMode === 'translate' ? 'btn enabled' : 'btn' } href="#" onClick={this.clickTranslate.bind(this)}><i className="fa fa-arrows"></i><span class="tool-text">Translate</span></button>
+          <button className={this.state.editMode === 'scale' ? 'btn enabled' : 'btn' } href="#" onClick={this.clickScale.bind(this)}><i className="fa fa-expand"></i><span class="tool-text">Scale</span></button>
+          <button className="btn" href="#" onClick={this.clickClose.bind(this)}><i className="fa fa-lock"></i><span class="tool-text">Lock</span></button>
 
-
+          <div className="opacity-container">
           <h4>Opacity:</h4>
           <Slider
             min={0}
@@ -84,6 +84,7 @@ export default class App extends React.Component {
             value={this.state.opacity * 100.0}
             onChange={this.handleOpacityChange.bind(this)}
           />
+          </div>
 
         </div>
 
