@@ -669,9 +669,6 @@ L.DistortableImage.Edit = L.Handler.extend({
 		this._scaleHandles = new L.LayerGroup();
 
 		var topLeftScaleHandle = new L.ScaleHandle(overlay, 0);
-		console.log(topLeftScaleHandle);
-		console.log(topLeftScaleHandle.options);
-		console.log(topLeftScaleHandle._icon);
 
 		//topLeftScaleHandle.options.icon.style[L.DomUtil.TRANSFORM] += ' rotateZ(90deg)';
 		this._scaleHandles.addLayer( topLeftScaleHandle );
