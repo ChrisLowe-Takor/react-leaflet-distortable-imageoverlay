@@ -1,7 +1,7 @@
 import { MapLayer, withLeaflet } from 'react-leaflet';
 import PropTypes from 'prop-types';
 
-import './lib/leaflet-distortableimage';
+import './node_modules/leaflet-distortable-image/dist/Leaflet.DistortableImage.js';
 import './lib/leaflet-path-transform';
 import L from 'leaflet';
 
