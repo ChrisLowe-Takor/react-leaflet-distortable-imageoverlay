@@ -13,7 +13,8 @@ export default class App extends React.Component {
   state = {
     opacity: PropTypes.number,
     editMode: PropTypes.string,
-    latLngString: PropTypes.string
+	latLngString: PropTypes.string,
+	isOn: PropTypes.boolean
   }
 
   constructor(props) {
@@ -21,7 +22,8 @@ export default class App extends React.Component {
     this.state = { 
       opacity: 0.75,
       editMode: 'none',
-      latLngString: ''
+	  latLngString: '',
+	  isOn: true
     }
   }
 
@@ -43,6 +45,14 @@ export default class App extends React.Component {
 
   clickClose() {
     this.setState({ editMode: 'none' });
+  }
+
+  clickOn() {
+	  this.setState({ isOn: true });
+  }
+
+  clickOff() {
+	  this.setState({ isOn: false });
   }
 
   onCornersUpdate(corners) {
@@ -75,7 +85,12 @@ export default class App extends React.Component {
           <button className={this.state.editMode === 'translate' ? 'btn enabled' : 'btn' } href="#" onClick={this.clickTranslate.bind(this)}><i className="fa fa-arrows"></i><span class="tool-text">Translate</span></button>
           <button className={this.state.editMode === 'scale' ? 'btn enabled' : 'btn' } href="#" onClick={this.clickScale.bind(this)}><i className="fa fa-expand"></i><span class="tool-text">Scale</span></button>
           <button className="btn" href="#" onClick={this.clickClose.bind(this)}><i className="fa fa-lock"></i><span class="tool-text">Lock</span></button>
-
+		  
+		  { this.state.isOn ? 
+		 	<button className="btn" href="#" onClick={this.clickOff.bind(this)}>Off</button> 
+		  :	
+		  	<button className="btn" href="#" onClick={this.clickOn.bind(this)}>On</button>
+		  }
           <div className="opacity-container">
           <h4>Opacity:</h4>
           <Slider
@@ -96,20 +111,22 @@ export default class App extends React.Component {
             attribution=""
             url="https://mt0.google.com/vt/lyrs=s&x={x}&y={y}&z={z}"/>
 
-          <ReactDistortableImageOverlay 
-          	url="https://i.imgur.com/jaRqxHa.jpg"
-            corners={[
-              new L.latLng(43.78710550492949,15.647438805314396),
-              new L.latLng(43.78710550492949,15.655914504316957),
-              new L.latLng(43.78098644922989,15.647438805314396),
-              new L.latLng(43.78098644922989,15.655914504316957)
-            ]}
-            
-            onCornersUpdate={this.onCornersUpdate.bind(this)}
-            onWellKnownTextUpdated={this.onWellKnownTextUpdated.bind(this)}
-            opacity={this.state.opacity}
-            editMode={this.state.editMode}
-          />
+		  { this.state.isOn ?
+			<ReactDistortableImageOverlay 
+				url="https://i.imgur.com/jaRqxHa.jpg"
+				corners={[
+				new L.latLng(43.78710550492949,15.647438805314396),
+				new L.latLng(43.78710550492949,15.655914504316957),
+				new L.latLng(43.78098644922989,15.647438805314396),
+				new L.latLng(43.78098644922989,15.655914504316957)
+				]}
+				
+				onCornersUpdate={this.onCornersUpdate.bind(this)}
+				onWellKnownTextUpdated={this.onWellKnownTextUpdated.bind(this)}
+				opacity={this.state.opacity}
+				editMode={this.state.editMode}
+			/>
+			: null }
 
 
         </Map>
