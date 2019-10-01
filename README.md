@@ -24,7 +24,7 @@ npm install --save react-leaflet-distortable-imageoverlay
 
 ## Usage
 
-The `ReactLeafletImageOverlay` component takes the corners of the ImageOverlay and updates the parent on changes with the `onWellKnownTextUpdated` and `onCornersUpdated` handlers.  The `editMode` can be one of:  'rotate', 'translate', 'distort' and 'stretch'.  The component itself has no toolbar or ability to switch between the edit modes so you should set them as state with a button or something (see example).
+The `ReactLeafletImageOverlay` component takes the corners of the ImageOverlay and updates the parent on changes with the `onWellKnownTextUpdated` and `onCornersUpdated` handlers.  The `editMode` can be one of:  'rotate', 'translate', 'distort' and 'scale'.  The component itself has no toolbar or ability to switch between the edit modes so you should set them as state with a button or something (see example).
 
 ```jsx
 import React, { Component } from 'react'
