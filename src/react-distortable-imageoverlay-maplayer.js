@@ -46,6 +46,10 @@ class ReactDistortableImageOverlayMapLayer extends MapLayer<LeafletElement, Prop
 			this.distortableImage = new L.DistortableImageOverlay(toProps.url, this.getOptions(toProps));
 		}
 
+		if (fromProps.corners !== toProps.corners) {
+			this.distortableImage = new L.DistortableImageOverlay(toProps.url, { corners: toProps.corners} );
+		}
+
 		// Apply opacity after the image loads
 		L.DomEvent.on(this.distortableImage, 'load', () => {
 			this.distortableImage._image.style.opacity = this.props.opacity;

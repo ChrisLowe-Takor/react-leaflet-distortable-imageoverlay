@@ -113,13 +113,14 @@ export default class App extends React.Component {
 
 		  { this.state.isOn ?
 			<ReactDistortableImageOverlay 
-				url="https://i.imgur.com/jaRqxHa.jpg"
+				url="http://short-preview.soar.earth/csw_archive/1389814.jpg"
 				corners={[
 				new L.latLng(43.78710550492949,15.647438805314396),
 				new L.latLng(43.78710550492949,15.655914504316957),
 				new L.latLng(43.78098644922989,15.647438805314396),
 				new L.latLng(43.78098644922989,15.655914504316957)
-				]}
+        ]}
+        corssOrigin={true}
 				
 				onCornersUpdate={this.onCornersUpdate.bind(this)}
 				onWellKnownTextUpdated={this.onWellKnownTextUpdated.bind(this)}
