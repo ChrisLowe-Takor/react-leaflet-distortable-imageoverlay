@@ -7,7 +7,7 @@ import L from 'leaflet';
 
 type Props = { 
 	url: PropTypes.string,
-	corners: [L.latlng, L.latlng, L.latlng, L.latlng],
+	corners: any,
 	opacity: PropTypes.number,
 	editMode: PropTypes.string,     // 'rotate', 'distort', 'translate' or 'scale'
 	onUpdate: (corners) => void;
@@ -17,6 +17,8 @@ class ReactDistortableImageOverlayMapLayer extends MapLayer<LeafletElement, Prop
 
 	createLeafletElement(props: Props): LeafletElement {
 		this.distortableImage = new L.DistortableImageOverlay(props.url, this.getOptions(props));
+		this.originalCorners = props.corners;
+
 
 		L.DomEvent.on(this.distortableImage, 'load', () => {
 			this.distortableImage._image.style.opacity = this.props.opacity;
@@ -33,6 +35,13 @@ class ReactDistortableImageOverlayMapLayer extends MapLayer<LeafletElement, Prop
 
 	updateLeafletElement(fromProps, toProps) {
 
+		if (fromProps.corners !== toProps.corners) {
+			console.log('Corners changed!')
+		} else {
+			console.log('Corners did not change!')
+		}
+
+
  		// Keep map ref before removing so we can addLayer when the LeafletElement is recreated
 		var map = this.distortableImage._map;
 		this.distortableImage.onRemove();
@@ -44,11 +53,7 @@ class ReactDistortableImageOverlayMapLayer extends MapLayer<LeafletElement, Prop
 			this.translateUpdateCorners = undefined;
 		} else {
 			this.distortableImage = new L.DistortableImageOverlay(toProps.url, this.getOptions(toProps));
-		}
-
-		if (fromProps.corners !== toProps.corners) {
-			this.distortableImage = new L.DistortableImageOverlay(toProps.url, { corners: toProps.corners} );
-		}
+		}2
 
 		// Apply opacity after the image loads
 		L.DomEvent.on(this.distortableImage, 'load', () => {
