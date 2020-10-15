@@ -18,7 +18,7 @@ class ReactDistortableImageOverlayMapLayer extends MapLayer<LeafletElement, Prop
 	createLeafletElement(props: Props): LeafletElement {
 		this.distortableImage = new L.DistortableImageOverlay(props.url, this.getOptions(props));
 		this.originalCorners = props.corners;
-
+		//console.log("Creato Leaflet element")
 
 		L.DomEvent.on(this.distortableImage, 'load', () => {
 			this.distortableImage._image.style.opacity = this.props.opacity;
@@ -38,12 +38,13 @@ class ReactDistortableImageOverlayMapLayer extends MapLayer<LeafletElement, Prop
 		if (fromProps.corners !== toProps.corners) {
 			console.log('Corners changed!')
 		} else {
-			console.log('Corners did not change!')
+			//console.log('Corners did not change!')
 		}
 
 
  		// Keep map ref before removing so we can addLayer when the LeafletElement is recreated
 		var map = this.distortableImage._map;
+		map.removeLayer(this.distortableImage)
 		this.distortableImage.onRemove();
 
 		// The translation state behaves differently from the rotate and distort (uses leaflet-path-transform)
@@ -53,7 +54,7 @@ class ReactDistortableImageOverlayMapLayer extends MapLayer<LeafletElement, Prop
 			this.translateUpdateCorners = undefined;
 		} else {
 			this.distortableImage = new L.DistortableImageOverlay(toProps.url, this.getOptions(toProps));
-		}2
+		}
 
 		// Apply opacity after the image loads
 		L.DomEvent.on(this.distortableImage, 'load', () => {
