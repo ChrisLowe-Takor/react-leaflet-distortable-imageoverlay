@@ -18,15 +18,8 @@ type Props = {
 // are passed upstream with the `onCornersUpdated` method
 export default class ReactDistortableImageOverlay extends React.Component {
 
-  state = {
-    corners: [L.latlng, L.latlng, L.latlng, L.latlng],
-  }
-
   constructor(props) {
     super(props);
-    this.state = { 
-      corners: props.corners
-    }
   }
 
   onUpdate(corners) {
@@ -46,9 +39,7 @@ export default class ReactDistortableImageOverlay extends React.Component {
       this.props.onWellKnownTextUpdated('POLYGON((' + flattenedLatLngs.join(', ') + '))');
     }
 
-    this.setState({
-      corners: corners
-    });
+    //this.props.corners = corners
   }
 
   render() {
@@ -57,7 +48,7 @@ export default class ReactDistortableImageOverlay extends React.Component {
       <ReactDistortableImageOverlayMapLayer 
         url={this.props.url}
         opacity={this.props.opacity}
-        corners={this.state.corners}
+        corners={this.props.corners}
         editMode={this.props.editMode}
         onUpdate={this.onUpdate.bind(this)}
       />
