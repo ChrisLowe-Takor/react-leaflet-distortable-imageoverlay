@@ -35,13 +35,6 @@ class ReactDistortableImageOverlayMapLayer extends MapLayer<LeafletElement, Prop
 
 	updateLeafletElement(fromProps, toProps) {
 
-		if (fromProps.corners !== toProps.corners) {
-			console.log('Corners changed!')
-		} else {
-			console.log('Corners did not change!')
-		}
-
-
  		// Keep map ref before removing so we can addLayer when the LeafletElement is recreated
 		var map = this.distortableImage._map;
 		this.distortableImage.onRemove();

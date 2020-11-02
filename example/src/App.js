@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes, { any } from 'prop-types';
 import { Map, TileLayer } from 'react-leaflet'
-import L from 'leaflet'
+import L, { LatLng } from 'leaflet'
 
 import ReactDistortableImageOverlay from 'react-leaflet-distortable-imageoverlay';
 import Slider from 'react-rangeslider';
@@ -85,6 +85,13 @@ export default class App extends React.Component {
 
   render() {
 
+    const reserialisedLatLng = [
+      new LatLng(43.77994068568226, 15.652127265930178),
+      new LatLng(43.78420096946275, 15.645453929901125),
+      new LatLng(43.78365876838752, 15.655732154846193),
+      new LatLng(43.78728367639441, 15.649616718292238)
+    ]
+
     return (
       <div className="map">
 
@@ -148,16 +155,25 @@ export default class App extends React.Component {
             attribution=""
             url="https://mt0.google.com/vt/lyrs=s&x={x}&y={y}&z={z}"/>
 
-		  { this.state.isOn ?
+		  {/* { this.state.isOn ?
 			<ReactDistortableImageOverlay 
 				url={this.state.imageUrl}
 				corners={this.state.corners}
-				onCornersUpdate={this.onCornersUpdate.bind(this)}
+				onCornersUpdated={this.onCornersUpdate.bind(this)}
 				onWellKnownTextUpdated={this.onWellKnownTextUpdated.bind(this)}
 				opacity={this.state.opacity}
 				editMode={this.state.editMode}
 			/>
-			: null }
+			: null } */}
+
+      <ReactDistortableImageOverlay
+        corners={reserialisedLatLng}
+        url={this.state.imageUrl}
+				onCornersUpdated={this.onCornersUpdate.bind(this)}
+				onWellKnownTextUpdated={this.onWellKnownTextUpdated.bind(this)}
+				opacity={this.state.opacity}
+				editMode={this.state.editMode}
+      />
 
 
         </Map>
