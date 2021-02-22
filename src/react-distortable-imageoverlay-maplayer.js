@@ -33,6 +33,16 @@ class ReactDistortableImageOverlayMapLayer extends MapLayer<LeafletElement, Prop
 		return this.distortableImage;
 	}
 
+    componentWillUnmount() {
+        if(this.distortableImage && this.distortableImage._map) {
+            var map = this.distortableImage._map;
+            if (this.translatePolygon) {
+                map.removeLayer(this.translatePolygon);
+            }
+            map.removeLayer(this.distortableImage);
+        }
+    }
+
 	updateLeafletElement(fromProps, toProps) {
 
  		// Keep map ref before removing so we can addLayer when the LeafletElement is recreated
